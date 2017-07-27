@@ -21,7 +21,7 @@ function execMake(editor: vscode.TextEditor, warn: boolean): void {
     const config: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration('elm');
     const name: string = <string>config.get('makeOutput');
     const specialFile: string = <string>config.get('makeSpecialFile');
-    const makeCommand: string = <string>config.get('makeCommand');
+    const makeCommand: string = path.resolve(cwd, <string>config.get('makeCommand'));
     if (specialFile.length > 0) {
       file = path.resolve(cwd, specialFile);
     }

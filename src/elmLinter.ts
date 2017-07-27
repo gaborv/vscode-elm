@@ -1,4 +1,5 @@
 import * as cp from 'child_process';
+import * as path from 'path';
 import * as readline from 'readline';
 import * as utils from './elmUtils';
 import * as vscode from 'vscode';
@@ -42,8 +43,8 @@ function elmMakeIssueToDiagnostic(issue: IElmIssue): vscode.Diagnostic {
 function checkForErrors(filename): Promise<IElmIssue[]> {
   return new Promise((resolve, reject) => {
     const config: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration('elm');
-    const makeCommand: string = <string>config.get('makeCommand');
     const cwd: string = utils.detectProjectRoot(filename) || vscode.workspace.rootPath;
+    const makeCommand: string = path.resolve(cwd, <string>config.get('makeCommand'));
     let make: cp.ChildProcess;
     const args = [filename, '--report', 'json', '--output', '/dev/null'];
     if (utils.isWindows) {
