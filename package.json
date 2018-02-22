@@ -286,8 +286,9 @@
   ],
   "main": "./out/src/elmMain",
   "scripts": {
-    "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -watch -p ./",
+    "elm:build": "elm-make ./src-elm/PackageManager.elm --yes --output ./out/src-elm/PackageManager.js && elm-make ./src-elm/Indexer.elm --yes --output ./out/src-elm/Indexer.js && elm-make ./src-elm/Sidekick.elm --yes --output ./out/src-elm/Sidekick.js && elm-make ./src-elm/Usages.elm --yes --output ./out/src-elm/Usages.js",
+    "vscode:prepublish": "tsc -p ./ && npm run elm:build",
+    "compile": "npm run elm:build && tsc -watch -p ./",
     "lint": "tslint \"src/**/*.ts\" && prettier \"{src,__{tests,mocks}__}/**/*.ts\"  --single-quote --trailing-comma all --list-different",
     "test": "node ./node_modules/vscode/bin/test",
     "postinstall": "node ./node_modules/vscode/bin/install",
@@ -295,7 +296,8 @@
   },
   "devDependencies": {
     "typescript": "^2.4.0",
-    "vscode": "1.1.0"
+    "vscode": "1.1.0",
+    "elm": "^0.18.0"
   },
   "dependencies": {
     "@types/mocha": "^2.2.32",
