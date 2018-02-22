@@ -34,20 +34,24 @@ Then, in `.vscode/settings.json`, add the following:
 "elm.makeCommand": "./node_modules/.bin/elm-make"
 ```
 
+For Windows
+```
+"elm.makeCommand": ".\\node_modules\\.bin\\elm-make"
+```
+
 ## Feature details
 
 ### Syntax highlighting
 
-Syntax highlighting is essential. The full language is supported. Can we improve the highlighting further? Please create an [issue](https://github.com/sbrink/vscode-elm/issues)!
+Syntax highlighting is essential. The full language is supported. Fenced code blocks in markdown files are highlighted too. Can we improve the highlighting further? Please create an [issue](https://github.com/sbrink/vscode-elm/issues)!
 
 ### Error highlighting
 
-![Error highlighting](images/errorHighlighting.gif)
-
 We support error highlighting **on save**. If you check *Auto save* under File, you should get feedback immediately.
 
+![Error highlighting](images/errorHighlighting.gif)
+
 This is marked **experimental** because we still have to improve the project detection.
-We'll solve this in the next days.
 
 ### Hover info - Function information
 
@@ -58,23 +62,29 @@ You can hover over a function and get the signature and comment.
 ### Document and Workspace symbols
 
 Use context menu "Go to definition" or F12. Alt+F12 to Peek
+
 ![Go to definition](images/gotoDefinition.gif)
 
 Ctrl+Shift+O for document symbols and Ctrl+T for workspace symbols
+
 ![Search/browse document symbols and workspace symbols](images/searchDefinition.gif)
 
 ### Code Actions (Lightbulb on errors and warnings with fixes)
 
 Tip - use Ctrl+. to invoke code action when the lightbulb is visible
+
 ![Code actions](images/codeActions.gif)
 
 ### Integration with Elm Package (Browse and install packages)
 
 Ctrl+Shift+P - Elm browse packages
+
 ![Browse packages](images/browsePackages.gif)
 
 Ctrl+Shift+P - Elm install package
+
 ![Install package](images/installPackage.gif)
+
 ### Local Project Intellisense (experimental)
 
 vscode-elm will scan your projects to build intellisense results.
@@ -142,14 +152,30 @@ Want to know more? Look at the [snippet definitions](snippets/elm.json)
 
 [elm-format](https://github.com/avh4/elm-format) is supported via the editor's `Format Code` command. To format your code using `elm-format`, press `Shift+Alt+F` on Windows, `Shift+Option+F` on Mac, or `Ctrl+Shift+I` on Linux.
 
-You can also configure `elm-format` to run on save by enabling the `elm.formatOnSave` in your settings.
+You can also configure `elm-format` to run on save by enabling `editor.formatOnSave` in your settings.
 
 ```
 // settings.json
 {
-    "elm.formatOnSave": true
+    "[elm]": {
+        "editor.formatOnSave": true
+    }
 }
 ```
+
+### Elm-format - local installation
+If you have elm-format installed locally add this line to '.vscode/settings.json'
+
+```
+"elm.formatCommand": "./node_modules/.bin/elm-format"
+```
+
+For Windows
+```
+"elm.formatCommand": ".\\node_modules\\.bin\\elm-format"
+```
+
+
 ### Elm-analyse integration
 [Elm-analyse](https://github.com/stil4m/elm-analyse) is a tool that allows you to analyse your Elm code, identify deficiencies and apply best practices.
 The integration enables vscode to show any problems identified by elm-analyse as linting warnings in your code.

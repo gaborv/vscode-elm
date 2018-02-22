@@ -1,3 +1,20 @@
+### 0.16.0 - 11.02.2018
+*  Jump to symbol based on imports. Jump to symbol that has been fully qualified such as `MyModule.myFunction` (by @joeandaverde)
+* Fix cursor moving when formatting with elm-format (by @adam77)
+* Support elm code syntax highlighting in markdown files (by @kachkaev)
+* Snippets improvement (by @andys8)
+* Fix `elm.makeCommand` sample path for Windows (by @lukaszgasior)
+
+### 0.15.1 - 03.10.2017
+* added prettier to the project (by @littleStudent)
+* Fix package installation  (by @wolverian)
+* save file only once formatting is finished (by @gyzerok)
+* Snippets for elm-test test and describe blocks (by @andys8 )
+
+### 0.15.0 - 10.08.2017
+* Add integration with `Elm-analyse` (by @hakonrossebo)
+* Use TsLint on `vscode-elm` code base (by @littleStudent)
+
 ### 0.14.1 - 21.06.2017
 * Added the ability to include function/type/type alias comments in intellisense (by @andrewsdev)
 * Fixed bugs in parsing elm-oracle hover results and bugs in userProject hover results (by @andrewsdev)

@@ -1,7 +1,7 @@
 {
   "name": "elm",
   "description": "Elm Language Support for Visual Studio Code",
-  "version": "0.14.1",
+  "version": "0.16.0",
   "publisher": "sbrink",
   "author": {
     "name": "Krzysztof Cieslak"
@@ -26,7 +26,7 @@
     "theme": "dark"
   },
   "engines": {
-    "vscode": "^0.10.1"
+    "vscode": "^1.6.0"
   },
   "categories": [
     "Languages",
@@ -81,11 +81,6 @@
           "type": "string",
           "default": "",
           "description": "When empty, the elm-make uses the current editor file. If set, elm-make always use this file. Example 'src/Main.elm' will run elm-make on workspacepath/src/Main.elm"
-        },
-        "elm.formatOnSave": {
-          "type": "boolean",
-          "default": false,
-          "description": "Runs elm-format on the file every time it is saved"
         },
         "elm.showSuggestionsInElmSyntax": {
           "type": "boolean",
@@ -250,6 +245,16 @@
     ],
     "grammars": [
       {
+        "scopeName": "markdown.elm.codeblock",
+        "path": "./syntaxes/codeblock.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.elm": "elm"
+        }
+      },
+      {
         "language": "elm",
         "scopeName": "source.elm",
         "path": "./syntaxes/elm.json"
@@ -283,23 +288,25 @@
   "scripts": {
     "vscode:prepublish": "tsc -p ./",
     "compile": "tsc -watch -p ./",
-    "lint": "tslint \"src/*.ts\"",
+    "lint": "tslint \"src/**/*.ts\" && prettier \"{src,__{tests,mocks}__}/**/*.ts\"  --single-quote --trailing-comma all --list-different",
     "test": "node ./node_modules/vscode/bin/test",
-    "postinstall": "node ./node_modules/vscode/bin/install"
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "prettier": "prettier --single-quote --trailing-comma all --write \"{src,__{tests,mocks}__}/**/*.ts\""
   },
   "devDependencies": {
     "typescript": "^2.4.0",
     "vscode": "1.1.0"
   },
   "dependencies": {
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.50",
     "elm-oracle": "^0.2.0",
+    "mocha": "^2.3.3",
+    "prettier": "^1.5.3",
     "request": "^2.69.0",
     "rimraf": "^2.5.2",
     "tslint": "^5.4.3",
     "vscode-uri": "^1.0.0",
-    "mocha": "^2.3.3",
-    "@types/mocha": "^2.2.32",
-    "@types/node": "^6.0.50",
     "ws": "^3.0.0"
   }
 }
