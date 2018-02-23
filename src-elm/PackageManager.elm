@@ -87,20 +87,23 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         GetPackageList projectDirectory ->
-            ( { model | projectDirectory = projectDirectory }
+            ( { model | projectDirectory = Debug.log "Fetch packages for" projectDirectory }
             , getPackageList
             )
 
         PackageListReceived (Ok packages) ->
             ( model
-            , ( model.projectDirectory, packages )
+            , ( model.projectDirectory, Debug.log "Received packages" packages )
                 |> showPackageListCmd
             )
 
-        PackageListReceived (Err _) ->
-            ( model
-            , getPackageListFailedCmd ()
-            )
+        PackageListReceived (Err error) ->
+            let
+                _ = Debug.log "Error occured" error
+            in    
+                ( model
+                , getPackageListFailedCmd ()
+                )
 
 
 getPackageList : Cmd Msg

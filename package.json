@@ -26,7 +26,7 @@
     "theme": "dark"
   },
   "engines": {
-    "vscode": "^1.6.0"
+    "vscode": "^1.20.0"
   },
   "categories": [
     "Languages",
@@ -197,8 +197,12 @@
         "title": "Elm: Make --warn"
       },
       {
-        "command": "elm.install",
-        "title": "Elm: Install packages/dependencies"
+        "command": "elm.installPackage",
+        "title": "Elm: Add new Elm packages to current project"
+      },
+      {
+        "command": "elm.uninstallPackage",
+        "title": "Elm: Remove Elm packages from current project"
       },
       {
         "command": "elm.browsePackage",
@@ -278,7 +282,8 @@
     "onCommand:elm.reactorStop",
     "onCommand:elm.make",
     "onCommand:elm.makeWarn",
-    "onCommand:elm.install",
+    "onCommand:elm.installPackage",
+    "onCommand:elm.uninstallPackage",
     "onCommand:elm.browsePackage",
     "onCommand:elm.analyseStart",
     "onCommand:elm.analyseStop",
@@ -296,7 +301,7 @@
   },
   "devDependencies": {
     "typescript": "^2.4.0",
-    "vscode": "1.1.0",
+    "vscode": "^1.1.10",
     "elm": "^0.18.0"
   },
   "dependencies": {
@@ -309,6 +314,7 @@
     "rimraf": "^2.5.2",
     "tslint": "^5.4.3",
     "vscode-uri": "^1.0.0",
-    "ws": "^3.0.0"
+    "ws": "^3.0.0",
+    "xmlhttprequest": "^1.8.0"
   }
 }
