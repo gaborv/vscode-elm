@@ -121,7 +121,7 @@
         },
         "elm.workspaceFilesExcludePatternUsedBySymbols": {
           "type": "string",
-          "default": "**/{node_modules,elm-stuff}/**",
+          "default": "**/{node_modules}/**",
           "description": "The exclude pattern used to search in workspace when reading workspace symbols."
         },
         "elm.includeUserFunctionDocumentation": {

@@ -69,7 +69,7 @@ function processWorkspace(query: string): Thenable<vscode.SymbolInformation[]> {
     let maxFiles = config['maxWorkspaceFilesUsedBySymbols'];
     let excludePattern = config['workspaceFilesExcludePatternUsedBySymbols'];
     let docs = vscode.workspace
-        .findFiles('**/*.elm', excludePattern, maxFiles)
+        .findFiles('**/*.elm', excludePattern, 5000)
         .then(
             workspaceFiles => {
                 let openedTextDocuments = openTextDocuments(workspaceFiles);
